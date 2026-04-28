@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import card1 from "@/assets/card-1.jpeg";
 import card2 from "@/assets/card-2.jpeg";
 import card3 from "@/assets/card-3.jpeg";
-import card4 from "@/assets/card-4.JPG";
-import card5 from "@/assets/card-5.JPG";
-import card6 from "@/assets/card-6.JPG";
+import card4 from "@/assets/card-4.jpg";
+import card5 from "@/assets/card-5.jpg";
+import card6 from "@/assets/card-6.jpg";
 import { ElementIcon } from "@/components/svg/GameIcons";
 
 const cards = [
