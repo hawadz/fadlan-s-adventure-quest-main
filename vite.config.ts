@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 
-// Kita buang @lovable.dev dan pakai config standar Vite SPA
+// Config bersih tanpa bawaan Cloudflare/Lovable
 export default defineConfig({
   plugins: [react()],
   resolve: {
@@ -11,7 +11,7 @@ export default defineConfig({
     },
   },
   build: {
-    // Memaksa outputnya standar biar Vercel nggak bingung
+    // Ngasih tau Vercel buat nyari hasil webnya di folder "dist"
     outDir: "dist",
   }
 });
