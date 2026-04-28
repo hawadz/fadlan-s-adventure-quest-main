@@ -1,0 +1,189 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Press+Start+2P&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-pixel: 'Press Start 2P', monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-pastel-blue: var(--pastel-blue);
+  --color-gb-green: var(--gb-green);
+  --color-gb-green-dark: var(--gb-green-dark);
+  --color-pokedex-red: var(--pokedex-red);
+  --color-poke-yellow: var(--poke-yellow);
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-fire: var(--fire);
+  --color-water: var(--water);
+  --color-electric: var(--electric);
+  --color-leaf: var(--leaf);
+}
+
+:root {
+  --radius: 0.875rem;
+
+  --background: oklch(0.99 0.005 240);
+  --foreground: oklch(0.18 0.04 260);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.04 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.04 260);
+
+  --primary: oklch(0.55 0.22 25);          /* Pokédex red */
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.85 0.08 240);       /* pastel blue */
+  --secondary-foreground: oklch(0.2 0.05 260);
+  --muted: oklch(0.96 0.01 240);
+  --muted-foreground: oklch(0.45 0.03 260);
+  --accent: oklch(0.92 0.05 240);
+  --accent-foreground: oklch(0.2 0.05 260);
+  --destructive: oklch(0.55 0.24 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.18 0.04 260);          /* thick dark borders for RPG */
+  --input: oklch(0.92 0.02 240);
+  --ring: oklch(0.55 0.22 25);
+
+  /* Theme palette */
+  --pastel-blue: oklch(0.85 0.09 235);
+  --gb-green: oklch(0.78 0.18 145);
+  --gb-green-dark: oklch(0.42 0.13 145);
+  --pokedex-red: oklch(0.58 0.22 25);
+  --poke-yellow: oklch(0.88 0.18 95);
+  --ink: oklch(0.16 0.04 260);
+  --paper: oklch(0.99 0.005 240);
+
+  /* Elemental */
+  --fire: oklch(0.68 0.21 35);
+  --water: oklch(0.7 0.14 235);
+  --electric: oklch(0.88 0.18 95);
+  --leaf: oklch(0.72 0.18 145);
+
+  /* Effects */
+  --shadow-rpg: 4px 4px 0 0 var(--ink);
+  --shadow-rpg-lg: 6px 6px 0 0 var(--ink);
+  --shadow-rpg-sm: 3px 3px 0 0 var(--ink);
+  --gradient-sky: linear-gradient(180deg, oklch(0.92 0.06 235) 0%, oklch(0.85 0.09 235) 100%);
+  --gradient-grass: linear-gradient(180deg, oklch(0.85 0.12 145) 0%, oklch(0.72 0.18 145) 100%);
+}
+
+.dark {
+  --background: oklch(0.16 0.04 260);
+  --foreground: oklch(0.98 0.005 240);
+  --card: oklch(0.22 0.05 260);
+  --card-foreground: oklch(0.98 0 0);
+  --border: oklch(0.98 0 0);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body { background-color: var(--color-background); color: var(--color-foreground); font-family: var(--font-sans); }
+}
+
+@layer utilities {
+  .font-pixel { font-family: var(--font-pixel); letter-spacing: 0.02em; }
+  .pixelated { image-rendering: pixelated; }
+
+  .rpg-box {
+    background: var(--card);
+    border: 4px solid var(--ink);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-rpg);
+    position: relative;
+  }
+  .rpg-box-lg { box-shadow: var(--shadow-rpg-lg); border-width: 4px; }
+
+  .rpg-btn {
+    font-family: var(--font-pixel);
+    background: var(--card);
+    color: var(--ink);
+    border: 3px solid var(--ink);
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow-rpg-sm);
+    padding: 0.85rem 1.25rem;
+    transition: transform 120ms ease, box-shadow 120ms ease;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    cursor: pointer;
+  }
+  .rpg-btn:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 0 var(--ink); }
+  .rpg-btn:active { transform: translate(2px,2px); box-shadow: 1px 1px 0 0 var(--ink); }
+  .rpg-btn-red { background: var(--pokedex-red); color: white; }
+  .rpg-btn-green { background: var(--gb-green); color: var(--ink); }
+  .rpg-btn-yellow { background: var(--poke-yellow); color: var(--ink); }
+  .rpg-btn-blue { background: var(--pastel-blue); color: var(--ink); }
+
+  .scanlines::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.06) 0 2px, transparent 2px 4px);
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  .blink { animation: blink 1.1s steps(2, start) infinite; }
+  @keyframes blink { to { visibility: hidden; } }
+
+  .float-y { animation: floatY 4s ease-in-out infinite; }
+  @keyframes floatY { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-12px);} }
+
+  .pop { animation: pop 0.4s ease-out; }
+  @keyframes pop { 0% { transform: scale(1);} 40% { transform: scale(1.4) rotate(8deg);} 100% { transform: scale(0); opacity: 0;} }
+
+  .shake { animation: shake 0.4s ease-in-out; }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+
+  .pixel-fade { animation: pixelFade 900ms steps(8, end) forwards; }
+  @keyframes pixelFade {
+    0% { clip-path: inset(0 0 0 0); opacity:1; }
+    100% { clip-path: inset(50% 50% 50% 50%); opacity:0; }
+  }
+
+  .tcg-card {
+    border: 4px solid var(--ink);
+    border-radius: 1rem;
+    background: var(--card);
+    box-shadow: var(--shadow-rpg);
+    overflow: hidden;
+    transition: transform 200ms ease;
+  }
+  .tcg-card:hover { transform: translateY(-6px) rotate(-1deg); }
+
+  .stat-bar {
+    height: 10px; border-radius: 999px; background: var(--muted);
+    border: 2px solid var(--ink); overflow: hidden;
+  }
+  .stat-bar > span {
+    display:block; height:100%;
+    background: linear-gradient(90deg, var(--gb-green) 0%, var(--poke-yellow) 60%, var(--pokedex-red) 100%);
+  }
+}
