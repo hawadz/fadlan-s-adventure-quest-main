@@ -15,28 +15,27 @@ function ExpShare() {
   );
 }
 
-// Rewritten items to be sweet messages instead of coupons
 const items = [
   {
     title: "Love Potion",
     tag: "Restores HP +∞",
     icon: <Potion color="var(--pokedex-red)" />,
     color: "var(--pokedex-red)",
-    reveal: "A gentle reminder that no matter how hard life or your quests get, you'll always have a safe place to heal right here with me. ❤️",
+    reveal: "Just a reminder that whenever you're tired or having a bad day, you can always come to me. I'm always here for you! ❤️",
   },
   {
     title: "Exp Share",
     tag: "Level Up Together",
     icon: <ExpShare />,
     color: "var(--poke-yellow)",
-    reveal: "From now on, whatever challenges you face, we face them together. We share the load, the stress, and the victories. Always your Player 2. 🎮",
+    reveal: "Whatever you're going through, you don't have to face it alone. Let's figure things out together! 🎮",
   },
   {
     title: "Master Ball",
     tag: "100% Catch Rate",
     icon: <MasterBall />,
     color: "oklch(0.55 0.22 300)",
-    reveal: "Out of millions of people, I caught you. Or maybe you caught me? Either way, I'm never trying to break free. Happy Anniversary! ✨",
+    reveal: "Thank you for staying with me through everything. Happy Anniversary sayang! ✨",
   },
 ];
 

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Pokeball } from "@/components/svg/GameIcons";
 
-// 1. IMPORT SEMUA FOTO DARI FOLDER ASSETS
 import img1 from "@/assets/match-1.jpg";
 import img2 from "@/assets/match-2.jpg";
 import img3 from "@/assets/match-3.jpg";
@@ -21,7 +20,6 @@ type CardData = {
     isMatched: boolean;
 };
 
-// 2. MASUKKAN VARIABEL FOTO KE DALAM ARRAY
 const CARD_PAIRS = [
     { type: "pic1", image: img1 },
     { type: "pic2", image: img2 },
@@ -105,7 +103,7 @@ export function MemoryMatch({ onComplete }: { onComplete: () => void }) {
         <section id="memory-match" className="px-2 sm:px-4 py-16 sm:py-20" style={{ background: "var(--paper)" }}>
             <div className="max-w-xl mx-auto">
                 <header className="text-center mb-8">
-                    <p className="font-pixel text-[10px] text-pokedex-red mb-2">// MINIGAME: MEMORY MATCH</p>
+                    <p className="font-pixel text-[10px] text-pokedex-red mb-2">// MEMORY MATCH</p>
                     <h2 className="font-pixel text-base sm:text-xl">Find The Pairs</h2>
                     <p className="text-sm text-muted-foreground mt-2">Flip the cards and match the photos!</p>
                 </header>
@@ -118,13 +116,11 @@ export function MemoryMatch({ onComplete }: { onComplete: () => void }) {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0, scale: 0.8 }}
-                                // Ubah gap lebih rapat
                                 className="grid grid-cols-4 gap-2 sm:gap-3 w-full max-w-[400px] mx-auto"
                             >
                                 {cards.map((card, index) => (
                                     <div 
                                         key={card.id} 
-                                        // UBAH UKURAN DI SINI: aspect-[3/4] bikin dia persegi panjang vertikal
                                         className="relative aspect-[3/4] cursor-pointer"
                                         style={{ perspective: "1000px" }}
                                         onClick={() => handleFlip(index)}
@@ -135,7 +131,6 @@ export function MemoryMatch({ onComplete }: { onComplete: () => void }) {
                                             transition={{ duration: 0.4 }}
                                             style={{ transformStyle: "preserve-3d" }}
                                         >
-                                            {/* Belakang Kartu (Desain Cover) */}
                                             <div 
                                                 className="absolute inset-0 bg-blue-100 border-[2px] border-water rounded-lg flex flex-col items-center justify-center overflow-hidden"
                                                 style={{ backfaceVisibility: "hidden" }}
@@ -185,7 +180,7 @@ export function MemoryMatch({ onComplete }: { onComplete: () => void }) {
                                 </div>
                                 
                                 <p className="text-sm text-muted-foreground px-4 mb-6">
-                                    Too precious to delete. Love you anyway!
+                                    You are the best thing that's ever been mine!
                                 </p>
 
                                 <button 

@@ -2,35 +2,41 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkle, PixelHeart } from "@/components/svg/GameIcons";
 
-// 10 Pesan bahasa Inggris yang natural dan santai
 const REWARDS = [
-  "Happy birthday & happy anniversary! Thanks for always being my safe place. 🏡❤️",
-  "Another year older! Hopefully you'll be more patient with my random antics this year wkwk. 🎂✌️",
-  "Happy anniversary! Out of everyone, I'm just really glad I got you as my partner. 🎮✨",
-  "Thanks for always listening to my rants and being my #1 supporter. I love you! 🥰",
-  "Let's keep leveling up together. I wouldn't want to do this with anyone else. 🚀",
-  "If I had to pick a player 2 again, I'd pick you a thousand times over. You're the best! 🌟",
-  "Whatever quests or challenges you're facing right now, just know I've always got your back. 💪❤️",
-  "Happy level up! Sending you a virtual hug for now. Hope you achieve everything you want this year. 🎁🫂",
-  "Crazy how far we've come. Here's to surviving more chaotic adventures together! 🥂",
-  "You're my favorite notification and the best plot twist. Love you! 🌻"
+  "Happy birthday & happy anniversary sayang! love you to the moon and back! 🌙💫",
+  "Another year older! Hopefully you'll be more patient with me this year hehe 🎂✌️",
+  "Happy anniversary ya hehe, thank you for loving me ❤️",
+  "Thanks for always listening to my rants and being my #1 supporter ❤️",
+  "Happy birthday once again! I hope all your wishes come true. I'll always be cheering for you! 🥳🎉",
+  "Thank you for being the best partner ever. Love you more than you know! ✨❤️",
+  "Wishing you the happiest birthday! Semoga apa yang kamu harapkan cepat terkabul ya! 🎂🎁",
+  "Can't wait to celebrate more birthdays and anniversaries with you 🎂✨",
+  "If I could do it all over again, I'd pick you a thousand times over.",
+  "Thank you for always making my days brighter! 🌻"
 ];
 
 export function EggGacha() {
   const [draws, setDraws] = useState(0);
   const [isHatched, setIsHatched] = useState(false);
   const [reward, setReward] = useState("");
+  // State baru untuk menyimpan sisa pesan yang belum keambil
+  const [availableRewards, setAvailableRewards] = useState([...REWARDS]);
 
-  const maxDraws = 10;
+  const maxDraws = REWARDS.length;
 
   const handleTap = () => {
-    if (isHatched || draws >= maxDraws) return;
-    
-    // Pilih ucapan acak
-    const randomReward = REWARDS[Math.floor(Math.random() * REWARDS.length)];
-    setReward(randomReward);
+    if (isHatched || draws >= maxDraws || availableRewards.length === 0) return;
+
+    // Pilih secara acak dari PESAN YANG TERSISA saja
+    const randomIndex = Math.floor(Math.random() * availableRewards.length);
+    const selectedReward = availableRewards[randomIndex];
+
+    setReward(selectedReward);
     setIsHatched(true);
     setDraws(prev => prev + 1);
+    
+    // Hapus pesan yang barusan terpilih dari kotak undian
+    setAvailableRewards(prev => prev.filter((_, index) => index !== randomIndex));
   };
 
   const handleNext = () => {
@@ -42,6 +48,8 @@ export function EggGacha() {
     setDraws(0);
     setIsHatched(false);
     setReward("");
+    // Isi ulang kotak undiannya dengan ke-10 pesan awal kalau mau main lagi
+    setAvailableRewards([...REWARDS]);
   };
 
   return (
@@ -56,8 +64,8 @@ export function EggGacha() {
         <div className="rpg-box p-8 bg-white flex flex-col items-center justify-center min-h-[400px]">
           {/* Tracker Sisa Gacha */}
           <div className="w-full flex justify-between mb-4 px-2 sm:px-4">
-              <span className="font-pixel text-[10px] text-muted-foreground">ATTEMPTS</span>
-              <span className="font-pixel text-[10px] text-pokedex-red">{draws} / {maxDraws}</span>
+            <span className="font-pixel text-[10px] text-muted-foreground">ATTEMPTS</span>
+            <span className="font-pixel text-[10px] text-pokedex-red">{draws} / {maxDraws}</span>
           </div>
 
           <AnimatePresence mode="wait">
@@ -94,13 +102,13 @@ export function EggGacha() {
                     </p>
                   </>
                 ) : (
-                    <div className="py-10">
-                        <h3 className="font-pixel text-pokedex-red mb-4">Out of messages!</h3>
-                        <p className="text-sm text-muted-foreground mb-6">You've read all 10 messages. Hope you liked them!</p>
-                        <button onClick={resetGame} className="rpg-btn rpg-btn-yellow text-xs px-6 py-3">
-                            ↻ Read them again
-                        </button>
-                    </div>
+                  <div className="py-10">
+                    <h3 className="font-pixel text-pokedex-red mb-4">Out of messages!</h3>
+                    <p className="text-sm text-muted-foreground mb-6">You've read all 10 messages. Hope you liked them!</p>
+                    <button onClick={resetGame} className="rpg-btn rpg-btn-yellow text-xs px-6 py-3">
+                      ↻ Read them again
+                    </button>
+                  </div>
                 )}
               </motion.div>
             ) : (
@@ -125,22 +133,20 @@ export function EggGacha() {
                   </p>
                 </div>
 
-                {/* Teks screenshot sudah dihilangkan sepenuhnya di sini */}
-
                 {draws < maxDraws ? (
-                    <button
-                      onClick={handleNext}
-                      className="rpg-btn rpg-btn-green text-xs px-6 py-3 flex items-center gap-2"
-                    >
-                      ▶ Next message
-                    </button>
+                  <button
+                    onClick={handleNext}
+                    className="rpg-btn rpg-btn-green text-xs px-6 py-3 flex items-center gap-2"
+                  >
+                    ▶ Next message
+                  </button>
                 ) : (
-                    <button
-                      onClick={resetGame}
-                      className="rpg-btn rpg-btn-yellow text-xs px-6 py-3 flex items-center gap-2 mt-4"
-                    >
-                      ↻ Read them again
-                    </button>
+                  <button
+                    onClick={resetGame}
+                    className="rpg-btn rpg-btn-yellow text-xs px-6 py-3 flex items-center gap-2 mt-4"
+                  >
+                    ↻ Read them again
+                  </button>
                 )}
               </motion.div>
             )}

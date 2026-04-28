@@ -1,19 +1,55 @@
 import { motion } from "framer-motion";
-import card1 from "@/assets/card-1.jpg";
-import card2 from "@/assets/card-2.jpg";
-import card3 from "@/assets/card-3.jpg";
-import card4 from "@/assets/card-4.jpg";
-import card5 from "@/assets/card-5.jpg";
-import card6 from "@/assets/card-6.jpg";
+import card1 from "@/assets/card-1.jpeg";
+import card2 from "@/assets/card-2.jpeg";
+import card3 from "@/assets/card-3.jpeg";
+import card4 from "@/assets/card-4.JPG";
+import card5 from "@/assets/card-5.JPG";
+import card6 from "@/assets/card-6.JPG";
 import { ElementIcon } from "@/components/svg/GameIcons";
 
 const cards = [
-  { img: card1, title: "First Encounter", caption: "The day our save file began.", type: "fairy" as const, hp: 120 },
-  { img: card2, title: "Route 01", caption: "Adventures through cherry-blossom trails.", type: "leaf" as const, hp: 95 },
-  { img: card3, title: "Sunset Cafe", caption: "Coffee, conversation, and quiet wins.", type: "fire" as const, hp: 110 },
-  { img: card4, title: "Tidal Town", caption: "Salty air and matching footprints.", type: "water" as const, hp: 105 },
-  { img: card5, title: "Cake +1", caption: "Another candle, another power-up.", type: "electric" as const, hp: 130 },
-  { img: card6, title: "Starlit Ending", caption: "Same sky, same hand, every night.", type: "psychic" as const, hp: 140 },
+  { 
+    img: card1, 
+    title: "Second Date", 
+    caption: "Still a bit shy here, who knew this would be the start of our forever?", 
+    type: "fairy" as const, 
+    hp: 120 
+  },
+  { 
+    img: card2, 
+    title: "Graduation", 
+    caption: "Feeling so proud and happy seeing you here 🎓",
+    type: "electric" as const, 
+    hp: 150 
+  },
+  { 
+    img: card3, 
+    title: "Work Days??", 
+    caption: "Cannot more proud of you for landing your first job hihi kerennya! 🚀", 
+    type: "fire" as const, 
+    hp: 110 
+  },
+  { 
+    img: card4, 
+    title: "Sunny Outing", 
+    caption: "Hoping we stay like this forever ☀️",
+    type: "water" as const, 
+    hp: 105 
+  },
+  { 
+    img: card5, 
+    title: "Sidang Day", 
+    caption: "Thank you for being here with me and always supporting me 💐",
+    type: "leaf" as const, 
+    hp: 130 
+  },
+  { 
+    img: card6, 
+    title: "Never Ending", 
+    caption: "Through all the fights and apologies, we made it through. Here we are, stronger than ever.", 
+    type: "psychic" as const, 
+    hp: 140 
+  },
 ];
 
 export function Gallery() {

@@ -90,7 +90,7 @@ export function BossBattle({ onComplete }: { onComplete: () => void }) {
             setTimeout(() => {
               setLog("Fadlan's HP dropped to 0... But Hawa felt bad and revived you!");
               setPlayerHp(50);
-            }, 1500);
+            }, 3000);
           }
           return nextHp;
         });
@@ -98,9 +98,9 @@ export function BossBattle({ onComplete }: { onComplete: () => void }) {
         setTimeout(() => {
           setTurn("player");
           shuffleActions();
-        }, 1000);
+        }, 400);
         
-      }, 2000);
+      }, 4000);
 
       return () => clearTimeout(timer);
     }

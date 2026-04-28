@@ -27,21 +27,20 @@ export function CatchGame({ onComplete }: { onComplete: () => void }) {
     const spawn = () => {
       const types: Item["type"][] = ["ball", "ball", "ball", "heart", "spark"];
 
-      // KUNCI: Buat 3 item baru sekaligus setiap kali fungsi ini dipanggil
       const newItems = Array.from({ length: 3 }).map(() => ({
         id: idRef.current++,
-        x: 5 + Math.random() * 85, // Area X diperluas sedikit
+        x: 5 + Math.random() * 85, 
         y: 10 + Math.random() * 70,
         type: types[Math.floor(Math.random() * types.length)],
         color: colors[Math.floor(Math.random() * colors.length)],
       }));
 
-      // Gabungkan dengan item lama, tahan maksimal 10 item di layar
+
       setItems(prev => [...prev.slice(-7), ...newItems]);
     };
 
-    spawn(); // Panggil sekali langsung di awal biar layar ga kosong
-    const t = setInterval(spawn, 800); // Tiap 0.8 detik munculin 3 item baru
+    spawn(); 
+    const t = setInterval(spawn, 800); 
     return () => clearInterval(t);
   }, [done]);
 
@@ -65,7 +64,7 @@ export function CatchGame({ onComplete }: { onComplete: () => void }) {
         <header className="text-center mb-6">
           <p className="font-pixel text-[10px] text-pokedex-red mb-2">// MINI-GAME</p>
           <h2 className="font-pixel text-base sm:text-xl">Gotta Catch 'Em All</h2>
-          <p className="text-sm text-muted-foreground mt-2">Tap ONLY the Pokéballs to catch them!</p>
+          <p className="text-sm text-muted-foreground mt-2">Tap only the Pokéballs to catch them!</p>
         </header>
 
         <div className="rpg-box p-3 sm:p-4">
@@ -138,12 +137,51 @@ export function CatchGame({ onComplete }: { onComplete: () => void }) {
                 <p className="font-pixel text-[10px] text-pokedex-red mb-3">// ANNIVERSARY LETTER</p>
                 <p className="text-sm sm:text-base leading-relaxed">
                   Hai HEHEHE 💌<br /><br />
-                  Happy 3nd Anniversary Sayang!! Thank you for making my life happier and brighter
-                  every day. I’m so so soooo grateful to have you in my life hihi. I
-                  hope your day always filled with love, laughter, and
-                  everything that makes you smile yeay. I love you to the moon and back!<br /><br />
-                  Happy birthday, happy anniversary - happy us. Here's to more side-quests, more
-                  shared loot, and more unforgettable saves❤️
+                  Happy 3rd Anniversary Sayang!! Thank you for making my life happier and brighter
+                  every day. I’m soo sooo soooo grateful to have you in my life hihi. <br /><br />
+                  I hope your day always filled with love, laughter, and
+                  everything that makes you smile and happy yeay!! I love you to the moon and back!❤️ <br /><br />
+                  Umm I don't have a fancy gift or a big surprise, 
+                  but I hope this little letter can show you how much you mean to me. <br /><br />
+                  Thank you for being you, and for letting me be a part of your life. <br /><br />
+                  i'm sorry if i can't always be the best for you, 
+                  but i promise to always try my best and give you all my love and support. <br /><br />
+                  Aku merasa sangat amat senang bisa kenal sama kamu, bisa melakukan banyak hal bareng kamu,
+                  dan bisa terus ada buat kamu. <br /><br />
+                  Aku seneng bisa ada yang aku tunggu dihidup aku selama 3 tahun ini,
+                  i love waiting for you, aku suka bisa nunggu kamu pulang kerja buat ngobrol sama aku,
+                  aku seneng bisa nunggu kamu pulang buat ketemu aku tiap bulannya. <br /><br />
+                  I feel so difficult to put into words how much you mean to me,
+                  tapi sejujurnya aku sayanggg banget banget sama kamu,
+                  mungkin aku selalu menaruh harapan yang membuat kamu terbebani, tapi sebenernya bukan itu maksud aku.<br /><br />
+                  Aku selama ini sangat sulit ya untuk mengunkapkan apa yang aku rasa,
+                  selama ini aku banyak takutnya, tapi aku bisa ngelakuin itu semua sama kamu,
+                  i feel so grateful that i can be myself around you, 
+                  that i can share my feelings and thoughts with you, and that i can love you in my own way. <br /><br />
+                  Aku juga banyak salahnya, aku banyak bikin kamu sakit hati, aku buat kamu sedih, aku buat kamu kecewa,
+                  aku buat kamu nangis, aku buat kamu bingung,
+                  aku buat kamu capek, i feel so sorry for all the times i hurt you,
+                  for all the times i made you sad, for all the times i made you disappointed, for all the times i made you cry, 
+                  and for all the times i made you tired. <br /><br />
+                  Aku minta maaf selama ini banyak menyakiti hati kamu,
+                  i will try my best to be better for you, to be more understanding, 
+                  to be more supportive, and to be more loving. <br /><br />
+                  Selama 3 tahun ini bener bener merubah hidup aku, semenjak aku ketemu kamu, aku banyak merasa banyak hal yang bisa aku lakuin,
+                  kamu selalu support aku, dengerin aku, aku bisa cerita semuanya sama kamu, aku seneng bisa sharing semua sama kamu,
+                  mungkin beberapa ada yang buat kamu terbebani dan kamu mungkin capek dengernya,
+                  tapi aku bener bener berterima kasih kamu selalu ada buat aku even for all the crazy things i said and i did, sorry... <br /><br />
+                  Terima kasih ya sudah sayang sama aku, sudah memberikan banyak hal yang belum pernah aku dapet selama ini,
+                  kasih sayang yang belum pernah aku dapet selama ini, i will say again i feel so grateful to have you in my life. <br /><br />
+                  Terima kasih sudah bersama aku sejauh ini, terima kasih sudah selalu ada diantara semua keributan yang ada,
+                  terima kasih sudah menerima aku selama ini, terima kasih selalu ada dengan semua maaf yang ada,
+                  terimakasih selalu meluangkan waktu kamu buat aku. <br /><br />
+                  Terima kasih juga selalu memilih aku walaupun entah berapa maaf yang akan kita ucapkan lagi,
+                  i'm sorry for all the fights we had, 
+                  for all the misunderstandings we had, for all the mistakes we made, 
+                  but i'm also grateful for all of that because it made us stronger and closer. <br /><br />
+                  I hope we can keep growing together, learning from each other, 
+                  and loving each other for many more years to come or maybe forever hehe?? <br /><br />
+                  Love you always💖
                 </p>
               </div>
 

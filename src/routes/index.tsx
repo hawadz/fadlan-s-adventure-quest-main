@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import tabIcon from "@/assets/icon.png";
 import { LockScreen } from "@/components/game/LockScreen";
 import { BgmPlayer } from "@/components/game/BgmPlayer";
 import { Hero } from "@/components/game/Hero";
@@ -15,9 +16,12 @@ import { Inventory } from "@/components/game/Inventory";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Fadlan's Adventure — Birthday & Anniversary" },
+      { title: "Fadlan's Adventure - Birthday & Anniversary" },
       { name: "description", content: "A retro RPG / Pokémon-style celebration site. Press start to play." },
     ],
+    links: [
+      { rel: "icon", type: "image/png", href: tabIcon }
+    ]
   }),
   component: Index,
 });

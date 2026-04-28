@@ -5,9 +5,9 @@ import { Pokeball, PixelHeart, Sparkle } from "@/components/svg/GameIcons";
 const QUESTIONS = [
     {
         id: 1,
-        question: "Di mana tempat pertama kali kita nge-date?",
-        options: ["Mall", "Bioskop", "MCD", "Kampus"],
-        correct: 1 
+        question: "Siapa yang paling sering ngambek duluan?",
+        options: ["Fadlan", "Hawa", "Dua-duanya", "Kucing Tetangga"],
+        correct: 3 
     },
     {
         id: 2,
@@ -29,9 +29,9 @@ const QUESTIONS = [
     },
     {
         id: 5,
-        question: "Siapa yang paling sering ngambek duluan?",
-        options: ["Fadlan", "Hawa", "Dua-duanya", "Kucing Tetangga"],
-        correct: 3 
+        question: "Di mana tempat pertama kali kita nge-date?",
+        options: ["Mall", "Bioskop", "MCD", "Kampus"],
+        correct: 1 
     },
     {
         id: 6,
@@ -53,7 +53,7 @@ const QUESTIONS = [
     },
     {
         id: 9,
-        question: "Apa warna favorit Hawa?",
+        question: "Apa warna favorit aku?",
         options: ["Biru", "Hitam", "Pink", "Ungu"],
         correct: 2 
     },
