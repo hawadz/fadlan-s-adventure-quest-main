@@ -1,6 +1,4 @@
 @import "tailwindcss";
-
-/* semua import di atas */
 @import "tw-animate-css";
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Press+Start+2P&display=swap');
 
@@ -106,7 +104,17 @@
 
 @layer base {
   * { border-color: var(--color-border); }
-  html, body { background-color: var(--color-background); color: var(--color-foreground); font-family: var(--font-sans); }
+  
+  html {
+    /* Standarnya adalah 16px. Semakin besar angkanya, semakin "zoom" aplikasinya */
+    font-size: 20px; /* Coba naikkan ke 18px, 20px, atau 22px sesuai selera */
+  }
+
+  body { 
+    background-color: var(--color-background); 
+    color: var(--color-foreground); 
+    font-family: var(--font-sans); 
+  }
 }
 
 @layer utilities {

@@ -56,16 +56,16 @@ export function EggGacha() {
     <section id="gacha" className="px-4 py-16 sm:py-20" style={{ background: "var(--paper)" }}>
       <div className="max-w-xl mx-auto">
         <header className="text-center mb-10">
-          <p className="font-pixel text-[10px] text-pokedex-red mb-2">// SPECIAL GACHA</p>
-          <h2 className="font-pixel text-base sm:text-xl">Lucky Egg</h2>
-          <p className="text-sm text-muted-foreground mt-2">Tap the egg to read a secret message from me. There are only 10!</p>
+          <p className="font-pixel text-sm text-pokedex-red mb-2">// SPECIAL GACHA</p>
+          <h2 className="font-pixel text-xl sm:text-3xl">Lucky Egg</h2>
+          <p className="text-base text-muted-foreground mt-3">Tap the egg to read a secret message from me. There are only 10!</p>
         </header>
 
-        <div className="rpg-box p-8 bg-white flex flex-col items-center justify-center min-h-[400px]">
+        <div className="rpg-box p-8 bg-white flex flex-col items-center justify-center min-h-[450px]">
           {/* Tracker Sisa Gacha */}
-          <div className="w-full flex justify-between mb-4 px-2 sm:px-4">
-            <span className="font-pixel text-[10px] text-muted-foreground">ATTEMPTS</span>
-            <span className="font-pixel text-[10px] text-pokedex-red">{draws} / {maxDraws}</span>
+          <div className="w-full flex justify-between mb-6 px-2 sm:px-4">
+            <span className="font-pixel text-xs sm:text-sm text-muted-foreground">ATTEMPTS</span>
+            <span className="font-pixel text-xs sm:text-sm text-pokedex-red">{draws} / {maxDraws}</span>
           </div>
 
           <AnimatePresence mode="wait">
@@ -85,7 +85,7 @@ export function EggGacha() {
                       onClick={handleTap}
                       className="cursor-pointer relative inline-block hover:scale-105 transition-transform"
                     >
-                      <svg viewBox="0 0 100 120" className="w-32 h-40 sm:w-40 sm:h-52 drop-shadow-xl">
+                      <svg viewBox="0 0 100 120" className="w-40 h-52 sm:w-56 sm:h-72 drop-shadow-2xl">
                         <path
                           d="M50 10 C20 10 10 50 10 80 C10 110 30 120 50 120 C70 120 90 110 90 80 C90 50 80 10 50 10 Z"
                           fill="#fff9e6"
@@ -97,15 +97,15 @@ export function EggGacha() {
                         <circle cx="30" cy="90" r="6" fill="var(--water)" opacity="0.4" />
                       </svg>
                     </motion.div>
-                    <p className="font-pixel text-[10px] mt-8 blink text-water cursor-pointer" onClick={handleTap}>
+                    <p className="font-pixel text-sm sm:text-base mt-10 blink text-water cursor-pointer" onClick={handleTap}>
                       TAP TO OPEN
                     </p>
                   </>
                 ) : (
                   <div className="py-10">
-                    <h3 className="font-pixel text-pokedex-red mb-4">Out of messages!</h3>
-                    <p className="text-sm text-muted-foreground mb-6">You've read all 10 messages. Hope you liked them!</p>
-                    <button onClick={resetGame} className="rpg-btn rpg-btn-yellow text-xs px-6 py-3">
+                    <h3 className="font-pixel text-xl sm:text-2xl text-pokedex-red mb-4">Out of messages!</h3>
+                    <p className="text-base text-muted-foreground mb-8">You've read all 10 messages. Hope you liked them!</p>
+                    <button onClick={resetGame} className="rpg-btn rpg-btn-yellow text-sm px-8 py-4">
                       ↻ Read them again
                     </button>
                   </div>
@@ -118,17 +118,17 @@ export function EggGacha() {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-center w-full flex flex-col items-center"
               >
-                <div className="flex justify-center gap-2 mb-4">
-                  <Sparkle className="w-8 h-8 text-poke-yellow" />
-                  <PixelHeart className="w-8 h-8 text-pokedex-red" />
-                  <Sparkle className="w-8 h-8 text-poke-yellow" />
+                <div className="flex justify-center gap-3 mb-6">
+                  <Sparkle className="w-12 h-12 text-poke-yellow" />
+                  <PixelHeart className="w-12 h-12 text-pokedex-red" />
+                  <Sparkle className="w-12 h-12 text-poke-yellow" />
                 </div>
 
-                <h3 className="font-pixel text-sm sm:text-base text-ink mb-6">Message unlocked! 💌</h3>
+                <h3 className="font-pixel text-lg sm:text-xl text-ink mb-6">Message unlocked! 💌</h3>
 
-                <div className="rpg-box-lg bg-blue-50 border-water p-6 mb-8 shadow-lg max-w-sm w-full">
-                  <p className="font-pixel text-[9px] text-water mb-3 tracking-tighter">✨ SECRET MESSAGE ✨</p>
-                  <p className="text-lg sm:text-xl font-bold text-ink leading-snug">
+                <div className="rpg-box-lg bg-blue-50 border-water p-8 mb-8 shadow-lg max-w-sm w-full">
+                  <p className="font-pixel text-xs text-water mb-4 tracking-tighter">✨ SECRET MESSAGE ✨</p>
+                  <p className="text-xl sm:text-2xl font-bold text-ink leading-relaxed">
                     "{reward}"
                   </p>
                 </div>
@@ -136,14 +136,14 @@ export function EggGacha() {
                 {draws < maxDraws ? (
                   <button
                     onClick={handleNext}
-                    className="rpg-btn rpg-btn-green text-xs px-6 py-3 flex items-center gap-2"
+                    className="rpg-btn rpg-btn-green text-sm px-8 py-4 flex items-center justify-center gap-2 w-full sm:w-auto"
                   >
                     ▶ Next message
                   </button>
                 ) : (
                   <button
                     onClick={resetGame}
-                    className="rpg-btn rpg-btn-yellow text-xs px-6 py-3 flex items-center gap-2 mt-4"
+                    className="rpg-btn rpg-btn-yellow text-sm px-8 py-4 flex items-center justify-center gap-2 mt-4 w-full sm:w-auto"
                   >
                     ↻ Read them again
                   </button>

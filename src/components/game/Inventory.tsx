@@ -46,13 +46,13 @@ export function Inventory() {
   return (
     <section className="px-4 py-16 sm:py-20" style={{ background: "linear-gradient(180deg, var(--muted) 0%, var(--paper) 100%)" }}>
       <div className="max-w-5xl mx-auto">
-        <header className="text-center mb-10">
-          <p className="font-pixel text-[10px] text-pokedex-red mb-2">// BAG</p>
-          <h2 className="font-pixel text-base sm:text-xl">Inventory</h2>
-          <p className="text-sm text-muted-foreground mt-2">Tap an item to read its description.</p>
+        <header className="text-center mb-12">
+          <p className="font-pixel text-sm text-pokedex-red mb-3">// BAG</p>
+          <h2 className="font-pixel text-xl sm:text-3xl">Inventory</h2>
+          <p className="text-base text-muted-foreground mt-3">Tap an item to read its description.</p>
         </header>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {items.map((it, i) => (
             <motion.button
               key={it.title}
@@ -63,18 +63,18 @@ export function Inventory() {
               transition={{ delay: i * 0.08 }}
               whileHover={{ y: -8 }}
               whileTap={{ scale: 0.97 }}
-              className="rpg-box p-5 text-left flex flex-col items-center gap-3"
+              className="rpg-box p-6 text-left flex flex-col items-center gap-4"
             >
-              <div className="w-24 h-24 sm:w-28 sm:h-28 grid place-items-center"
-                style={{ filter: "drop-shadow(3px 3px 0 var(--ink))" }}>
+              <div className="w-28 h-28 sm:w-32 sm:h-32 grid place-items-center"
+                style={{ filter: "drop-shadow(4px 4px 0 var(--ink))" }}>
                 <motion.div animate={{ y: [0, -6, 0] }} transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }} className="w-full h-full">
                   {it.icon}
                 </motion.div>
               </div>
-              <div className="text-center w-full">
-                <h3 className="font-pixel text-xs sm:text-sm">{it.title}</h3>
-                <p className="text-xs text-muted-foreground mt-1">{it.tag}</p>
-                <span className="inline-block mt-3 rpg-btn rpg-btn-blue !py-2 !px-3">▶ Inspect</span>
+              <div className="text-center w-full mt-2">
+                <h3 className="font-pixel text-sm sm:text-base">{it.title}</h3>
+                <p className="text-sm text-muted-foreground mt-2">{it.tag}</p>
+                <span className="inline-block mt-5 rpg-btn rpg-btn-blue px-5 py-3 text-xs sm:text-sm">▶ Inspect</span>
               </div>
             </motion.button>
           ))}
@@ -88,19 +88,19 @@ export function Inventory() {
             onClick={() => setOpen(null)}>
             <motion.div onClick={e => e.stopPropagation()}
               initial={{ scale: 0.7, y: 30 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.7 }}
-              className="rpg-box rpg-box-lg max-w-md w-full p-6">
-              <div className="flex items-center gap-4">
-                <div className="w-20 h-20 shrink-0">{item.icon}</div>
+              className="rpg-box rpg-box-lg max-w-lg w-full p-8">
+              <div className="flex items-center gap-5">
+                <div className="w-24 h-24 shrink-0">{item.icon}</div>
                 <div>
-                  <p className="font-pixel text-[10px] text-pokedex-red">// ITEM INFO</p>
-                  <h3 className="font-pixel text-sm mt-1">{item.title}</h3>
-                  <p className="text-xs text-muted-foreground">{item.tag}</p>
+                  <p className="font-pixel text-xs text-pokedex-red">// ITEM INFO</p>
+                  <h3 className="font-pixel text-base sm:text-xl mt-2">{item.title}</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground mt-1">{item.tag}</p>
                 </div>
               </div>
-              <div className="mt-5 p-4 border-[3px] border-ink rounded-lg bg-paper">
-                <p className="text-sm leading-relaxed">{item.reveal}</p>
+              <div className="mt-6 p-5 border-[3px] border-ink rounded-lg bg-paper">
+                <p className="text-base sm:text-lg leading-relaxed">{item.reveal}</p>
               </div>
-              <button onClick={() => setOpen(null)} className="rpg-btn rpg-btn-green mt-5 w-full">▶ Close</button>
+              <button onClick={() => setOpen(null)} className="rpg-btn rpg-btn-green mt-6 w-full text-sm py-4">▶ Close</button>
             </motion.div>
           </motion.div>
         )}

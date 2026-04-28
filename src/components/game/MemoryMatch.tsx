@@ -100,15 +100,15 @@ export function MemoryMatch({ onComplete }: { onComplete: () => void }) {
     };
 
     return (
-        <section id="memory-match" className="px-2 sm:px-4 py-16 sm:py-20" style={{ background: "var(--paper)" }}>
-            <div className="max-w-xl mx-auto">
-                <header className="text-center mb-8">
-                    <p className="font-pixel text-[10px] text-pokedex-red mb-2">// MEMORY MATCH</p>
-                    <h2 className="font-pixel text-base sm:text-xl">Find The Pairs</h2>
-                    <p className="text-sm text-muted-foreground mt-2">Flip the cards and match the photos!</p>
+        <section id="memory-match" className="px-4 sm:px-6 py-16 sm:py-20" style={{ background: "var(--paper)" }}>
+            <div className="max-w-2xl mx-auto">
+                <header className="text-center mb-10">
+                    <p className="font-pixel text-sm text-pokedex-red mb-3">// MEMORY MATCH</p>
+                    <h2 className="font-pixel text-xl sm:text-3xl">Find The Pairs</h2>
+                    <p className="text-base text-muted-foreground mt-3">Flip the cards and match the photos!</p>
                 </header>
 
-                <div className="rpg-box p-3 sm:p-5 bg-white min-h-[400px] flex items-center justify-center">
+                <div className="rpg-box p-4 sm:p-8 bg-white min-h-[450px] flex items-center justify-center">
                     <AnimatePresence mode="wait">
                         {!isComplete ? (
                             <motion.div 
@@ -116,7 +116,7 @@ export function MemoryMatch({ onComplete }: { onComplete: () => void }) {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0, scale: 0.8 }}
-                                className="grid grid-cols-4 gap-2 sm:gap-3 w-full max-w-[400px] mx-auto"
+                                className="grid grid-cols-4 gap-3 sm:gap-4 w-full max-w-[500px] mx-auto"
                             >
                                 {cards.map((card, index) => (
                                     <div 
@@ -132,19 +132,19 @@ export function MemoryMatch({ onComplete }: { onComplete: () => void }) {
                                             style={{ transformStyle: "preserve-3d" }}
                                         >
                                             <div 
-                                                className="absolute inset-0 bg-blue-100 border-[2px] border-water rounded-lg flex flex-col items-center justify-center overflow-hidden"
+                                                className="absolute inset-0 bg-blue-100 border-[3px] border-water rounded-lg flex flex-col items-center justify-center overflow-hidden"
                                                 style={{ backfaceVisibility: "hidden" }}
                                             >
                                                 {/* Pola dekoratif biar mirip kartu beneran */}
-                                                <div className="absolute inset-1 border-[1px] border-dashed border-water/50 rounded-md"></div>
-                                                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-white rounded-full flex items-center justify-center shadow-sm z-10">
-                                                    <Pokeball color="var(--water)" className="w-4 h-4 sm:w-5 sm:h-5 opacity-80" />
+                                                <div className="absolute inset-1.5 border-[2px] border-dashed border-water/50 rounded-md"></div>
+                                                <div className="w-8 h-8 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center shadow-sm z-10">
+                                                    <Pokeball color="var(--water)" className="w-5 h-5 sm:w-7 sm:h-7 opacity-80" />
                                                 </div>
                                             </div>
                                             
                                             {/* Depan Kartu (Foto) */}
                                             <div 
-                                                className="absolute inset-0 bg-white border-2 border-ink rounded-lg overflow-hidden shadow-sm"
+                                                className="absolute inset-0 bg-white border-[3px] border-ink rounded-lg overflow-hidden shadow-sm"
                                                 style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
                                             >
                                                 <img 
@@ -164,28 +164,28 @@ export function MemoryMatch({ onComplete }: { onComplete: () => void }) {
                                 animate={{ opacity: 1, scale: 1 }}
                                 className="text-center w-full"
                             >
-                                <h3 className="font-pixel text-poke-yellow mb-5 text-sm sm:text-lg" style={{ textShadow: "2px 2px 0 var(--ink)" }}>
+                                <h3 className="font-pixel text-poke-yellow mb-6 text-xl sm:text-2xl" style={{ textShadow: "3px 3px 0 var(--ink)" }}>
                                     SECRET UNLOCKED!
                                 </h3>
                                 
-                                <div className="border-[4px] border-ink p-2 sm:p-3 bg-white rotate-2 mx-auto inline-block shadow-lg mb-6">
-                                    <div className="relative w-48 h-48 sm:w-56 sm:h-56 overflow-hidden border border-gray-200">
+                                <div className="border-[6px] border-ink p-3 sm:p-4 bg-white rotate-2 mx-auto inline-block shadow-xl mb-8">
+                                    <div className="relative w-56 h-56 sm:w-72 sm:h-72 overflow-hidden border-2 border-gray-200">
                                         <img 
                                             src={secretImg} 
                                             alt="Secret Funny Photo" 
                                             className="w-full h-full object-cover"
                                         />
                                     </div>
-                                    <p className="font-caveat text-xl mt-3 text-ink font-bold">Caught in 4K 📸</p>
+                                    <p className="font-caveat text-2xl mt-4 text-ink font-bold">Caught in 4K 📸</p>
                                 </div>
                                 
-                                <p className="text-sm text-muted-foreground px-4 mb-6">
+                                <p className="text-base text-muted-foreground px-4 mb-8">
                                     You are the best thing that's ever been mine!
                                 </p>
 
                                 <button 
                                     onClick={setupGame} 
-                                    className="rpg-btn rpg-btn-yellow text-xs px-6 py-3"
+                                    className="rpg-btn rpg-btn-yellow text-sm px-8 py-4"
                                 >
                                     ↻ Play Again
                                 </button>

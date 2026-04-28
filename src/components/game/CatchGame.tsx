@@ -61,23 +61,23 @@ export function CatchGame({ onComplete }: { onComplete: () => void }) {
   return (
     <section id="catch" className="px-4 py-16 sm:py-20" style={{ background: "var(--paper)" }}>
       <div className="max-w-3xl mx-auto">
-        <header className="text-center mb-6">
-          <p className="font-pixel text-[10px] text-pokedex-red mb-2">// MINI-GAME</p>
-          <h2 className="font-pixel text-base sm:text-xl">Gotta Catch 'Em All</h2>
-          <p className="text-sm text-muted-foreground mt-2">Tap only the Pokéballs to catch them!</p>
+        <header className="text-center mb-8">
+          <p className="font-pixel text-sm text-pokedex-red mb-3">// MINI-GAME</p>
+          <h2 className="font-pixel text-xl sm:text-3xl">Gotta Catch 'Em All</h2>
+          <p className="text-base text-muted-foreground mt-3">Tap only the Pokéballs to catch them!</p>
         </header>
 
-        <div className="rpg-box p-3 sm:p-4">
-          <div className="flex items-center justify-between mb-3">
-            <span className="font-pixel text-[10px]">CAUGHT</span>
-            <span className="font-pixel text-xs text-pokedex-red">{caught} / {TARGET}</span>
+        <div className="rpg-box p-4 sm:p-6">
+          <div className="flex items-center justify-between mb-4">
+            <span className="font-pixel text-xs sm:text-sm">CAUGHT</span>
+            <span className="font-pixel text-sm sm:text-base text-pokedex-red">{caught} / {TARGET}</span>
           </div>
-          <div className="stat-bar mb-4">
+          <div className="stat-bar mb-6 h-4">
             <span style={{ width: `${(Math.min(caught, TARGET) / TARGET) * 100}%`, transition: "width 0.3s" }} />
           </div>
 
-          <div ref={containerRef} className="relative w-full rounded-lg overflow-hidden border-[3px] border-ink"
-            style={{ height: 360, background: "linear-gradient(180deg, var(--pastel-blue) 0%, oklch(0.92 0.08 145) 100%)" }}>
+          <div ref={containerRef} className="relative w-full rounded-lg overflow-hidden border-[4px] border-ink"
+            style={{ height: 450, background: "linear-gradient(180deg, var(--pastel-blue) 0%, oklch(0.92 0.08 145) 100%)" }}>
             <AnimatePresence>
               {items.map(it => {
                 const isFake = it.type !== "ball";
@@ -89,7 +89,7 @@ export function CatchGame({ onComplete }: { onComplete: () => void }) {
                     exit={{ scale: 0, opacity: 0 }}
                     transition={{ y: { duration: 2.5, repeat: Infinity, ease: "easeInOut" }, scale: { duration: 0.3 } }}
                     style={{ position: "absolute", left: `${it.x}%`, top: `${it.y}%` }}
-                    className={`w-12 h-12 sm:w-14 sm:h-14 ${it.popping ? "pop" : ""} ${isFake ? "pointer-events-none cursor-default" : "cursor-pointer drop-shadow-lg z-10"}`}
+                    className={`w-16 h-16 sm:w-20 sm:h-20 ${it.popping ? "pop" : ""} ${isFake ? "pointer-events-none cursor-default" : "cursor-pointer drop-shadow-xl z-10"}`}
                     onClick={() => {
                       if (!it.popping && !isFake) {
                         handleCatch(it.id);
@@ -104,13 +104,13 @@ export function CatchGame({ onComplete }: { onComplete: () => void }) {
               })}
             </AnimatePresence>
             {done && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-ink/60 backdrop-blur-sm z-20 gap-4">
-                <p className="font-pixel text-poke-yellow text-sm sm:text-lg" style={{ textShadow: "3px 3px 0 var(--ink)" }}>
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-ink/60 backdrop-blur-sm z-20 gap-5">
+                <p className="font-pixel text-poke-yellow text-xl sm:text-2xl" style={{ textShadow: "4px 4px 0 var(--ink)" }}>
                   ★ COMPLETE ★
                 </p>
                 <button
                   onClick={resetGame}
-                  className="rpg-btn rpg-btn-yellow mt-2 text-xs px-4 py-2"
+                  className="rpg-btn rpg-btn-yellow mt-4 text-sm px-6 py-3 shadow-lg"
                 >
                   ↻ Play Again
                 </button>
@@ -123,19 +123,19 @@ export function CatchGame({ onComplete }: { onComplete: () => void }) {
       {/* Level up modal */}
       <AnimatePresence>
         {showLetter && (
-          <motion.div className="fixed inset-0 z-50 bg-ink/70 flex items-center justify-center p-4"
+          <motion.div className="fixed inset-0 z-50 bg-ink/80 flex items-center justify-center p-4"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             onClick={() => setShowLetter(false)}>
             <motion.div onClick={e => e.stopPropagation()}
               initial={{ scale: 0.7, y: 30 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.7 }}
-              className="rpg-box rpg-box-lg max-w-lg w-full p-6 sm:p-8 max-h-[88vh] overflow-y-auto">
-              <p className="font-pixel text-[10px] text-poke-yellow bg-ink inline-block px-2 py-1 rounded">+1000 EXP</p>
-              <h3 className="font-pixel text-base sm:text-xl mt-3">★ LEVEL UP! ★</h3>
-              <p className="text-sm text-muted-foreground mt-2">A hidden letter has been unlocked.</p>
+              className="rpg-box rpg-box-lg max-w-2xl w-full p-6 sm:p-10 max-h-[88vh] overflow-y-auto">
+              <p className="font-pixel text-xs text-poke-yellow bg-ink inline-block px-3 py-1.5 rounded">+1000 EXP</p>
+              <h3 className="font-pixel text-xl sm:text-2xl mt-4">★ LEVEL UP! ★</h3>
+              <p className="text-base text-muted-foreground mt-2">A hidden letter has been unlocked.</p>
 
-              <div className="mt-5 p-4 sm:p-5 border-[3px] border-ink rounded-lg bg-paper">
-                <p className="font-pixel text-[10px] text-pokedex-red mb-3">// ANNIVERSARY LETTER</p>
-                <p className="text-sm sm:text-base leading-relaxed">
+              <div className="mt-6 p-5 sm:p-8 border-[4px] border-ink rounded-lg bg-paper">
+                <p className="font-pixel text-xs text-pokedex-red mb-5">// ANNIVERSARY LETTER</p>
+                <p className="text-base sm:text-lg leading-relaxed text-ink">
                   Hai HEHEHE 💌<br /><br />
                   Happy 3rd Anniversary Sayang!! Thank you for making my life happier and brighter
                   every day. I’m soo sooo soooo grateful to have you in my life hihi. <br /><br />
@@ -185,8 +185,8 @@ export function CatchGame({ onComplete }: { onComplete: () => void }) {
                 </p>
               </div>
 
-              <div className="flex gap-3 mt-5">
-                <button onClick={() => setShowLetter(false)} className="rpg-btn rpg-btn-green w-full">
+              <div className="flex gap-4 mt-6">
+                <button onClick={() => setShowLetter(false)} className="rpg-btn rpg-btn-green w-full py-4 text-sm">
                   ▶ Continue Adventure
                 </button>
               </div>

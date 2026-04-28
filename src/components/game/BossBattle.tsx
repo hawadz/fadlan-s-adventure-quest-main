@@ -156,9 +156,9 @@ export function BossBattle({ onComplete }: { onComplete: () => void }) {
 
       <div className="max-w-2xl mx-auto">
         <header className="text-center mb-8">
-          <p className="font-pixel text-[10px] text-pokedex-red mb-2">// FINAL STAGE</p>
+          <p className="font-pixel text-sm text-pokedex-red mb-2">// FINAL STAGE</p>
           {/* Teks diubah jadi text-ink agar kelihatan di background putih */}
-          <h2 className="font-pixel text-base sm:text-xl text-ink">Boss Battle!</h2>
+          <h2 className="font-pixel text-xl sm:text-3xl text-ink">Boss Battle!</h2>
         </header>
 
         <AnimatePresence mode="wait">
@@ -175,10 +175,10 @@ export function BossBattle({ onComplete }: { onComplete: () => void }) {
               <div className="relative z-10">
                 {/* === BOSS HAWA AREA (Top Right) === */}
                 <div className="flex justify-between items-start mb-12">
-                  <div className="w-1/2 max-w-[220px] border-[3px] border-ink p-2 sm:p-3 bg-white shadow-[4px_4px_0_0_rgba(0,0,0,1)] rounded-md">
-                    <h3 className="font-pixel text-[10px] sm:text-xs mb-1">GRUMPY HAWA</h3>
-                    <p className="text-[9px] text-muted-foreground mb-1">Anger Meter</p>
-                    <div className="w-full h-3 bg-gray-200 border-2 border-ink rounded-full overflow-hidden p-[1px]">
+                  <div className="w-1/2 max-w-[250px] border-[3px] border-ink p-3 sm:p-4 bg-white shadow-[4px_4px_0_0_rgba(0,0,0,1)] rounded-md">
+                    <h3 className="font-pixel text-sm sm:text-base mb-2">GRUMPY HAWA</h3>
+                    <p className="text-xs text-muted-foreground mb-1">Anger Meter</p>
+                    <div className="w-full h-4 bg-gray-200 border-2 border-ink rounded-full overflow-hidden p-[1px]">
                       <motion.div 
                         className={`h-full rounded-full ${getHpColor(bossHp)}`}
                         animate={{ width: `${bossHp}%` }}
@@ -190,7 +190,7 @@ export function BossBattle({ onComplete }: { onComplete: () => void }) {
                   <motion.div
                     animate={isBossShaking ? { x: [-10, 10, -10, 10, 0], filter: "brightness(2)" } : { y: [0, -5, 0] }}
                     transition={isBossShaking ? { duration: 0.3 } : { duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-[4px] border-white shadow-xl overflow-hidden bg-white mr-2 sm:mr-4"
+                    className="w-28 h-28 sm:w-36 sm:h-36 rounded-full border-[4px] border-white shadow-xl overflow-hidden bg-white mr-2 sm:mr-4"
                   >
                     <img src={imgHawa} alt="Boss Hawa" className="w-full h-full object-cover" />
                   </motion.div>
@@ -201,18 +201,18 @@ export function BossBattle({ onComplete }: { onComplete: () => void }) {
                   <motion.div
                     animate={isPlayerShaking ? { x: [-10, 10, -10, 10, 0], filter: "contrast(1.5) sepia(1)" } : {}}
                     transition={{ duration: 0.4 }}
-                    className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-[4px] border-white shadow-xl overflow-hidden bg-white ml-2 sm:ml-4"
+                    className="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-[4px] border-white shadow-xl overflow-hidden bg-white ml-2 sm:ml-4"
                   >
                     <img src={imgFadlan} alt="Player Fadlan" className="w-full h-full object-cover" />
                   </motion.div>
 
-                  <div className="w-1/2 max-w-[220px] border-[3px] border-ink p-2 sm:p-3 bg-white shadow-[4px_4px_0_0_rgba(0,0,0,1)] rounded-md">
-                    <h3 className="font-pixel text-[10px] sm:text-xs mb-1">FADLAN</h3>
+                  <div className="w-1/2 max-w-[250px] border-[3px] border-ink p-3 sm:p-4 bg-white shadow-[4px_4px_0_0_rgba(0,0,0,1)] rounded-md">
+                    <h3 className="font-pixel text-sm sm:text-base mb-2">FADLAN</h3>
                     <div className="flex justify-between items-end mb-1">
-                      <p className="text-[9px] text-muted-foreground">Health Points</p>
-                      <p className="font-pixel text-[10px]">{playerHp}/100</p>
+                      <p className="text-xs text-muted-foreground">Health Points</p>
+                      <p className="font-pixel text-xs">{playerHp}/100</p>
                     </div>
-                    <div className="w-full h-3 bg-gray-200 border-2 border-ink rounded-full overflow-hidden p-[1px]">
+                    <div className="w-full h-4 bg-gray-200 border-2 border-ink rounded-full overflow-hidden p-[1px]">
                       <motion.div 
                         className={`h-full rounded-full ${getHpColor(playerHp)}`}
                         animate={{ width: `${playerHp}%` }}
@@ -223,27 +223,27 @@ export function BossBattle({ onComplete }: { onComplete: () => void }) {
                 </div>
 
                 {/* === UI BOTTOM MENU === */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 border-[3px] border-ink bg-white p-2 rounded-lg shadow-md">
-                  <div className="p-3 bg-gray-100 border-2 border-dashed border-gray-300 rounded flex items-center justify-center min-h-[80px]">
-                    <p className="font-pixel text-[9px] sm:text-[10px] text-ink leading-relaxed text-center">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-[3px] border-ink bg-white p-3 rounded-lg shadow-md">
+                  <div className="p-4 bg-gray-100 border-2 border-dashed border-gray-300 rounded flex items-center justify-center min-h-[100px]">
+                    <p className="font-pixel text-xs sm:text-sm text-ink leading-relaxed text-center">
                       {log}
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-1 gap-2">
+                  <div className="grid grid-cols-1 gap-3">
                     {turn === "boss" ? (
-                      <div className="flex items-center justify-center h-full bg-gray-100 border-2 border-ink rounded">
-                        <p className="font-pixel text-[10px] blink text-pokedex-red">Waiting for Boss's move...</p>
+                      <div className="flex items-center justify-center h-full bg-gray-100 border-2 border-ink rounded p-4">
+                        <p className="font-pixel text-sm blink text-pokedex-red">Waiting for Boss's move...</p>
                       </div>
                     ) : (
                       currentActions.map((action) => (
                         <button 
                           key={action.id}
                           onClick={() => handlePlayerAction(action)}
-                          className="border-2 border-ink bg-white hover:bg-yellow-50 font-pixel text-[9px] sm:text-[10px] py-2 px-3 text-left transition-colors flex justify-between items-center rounded"
+                          className="border-2 border-ink bg-white hover:bg-yellow-50 font-pixel text-xs py-3 px-4 text-left transition-colors flex justify-between items-center rounded shadow-sm"
                         >
                           <span>{action.name}</span>
-                          <span className="text-gray-400 text-[8px]">{action.type === 'attack' ? '⚔️' : '🩹'}</span>
+                          <span className="text-gray-400 text-[10px]">{action.type === 'attack' ? '⚔️' : '🩹'}</span>
                         </button>
                       ))
                     )}
@@ -259,28 +259,28 @@ export function BossBattle({ onComplete }: { onComplete: () => void }) {
               className="rpg-box bg-white p-8 text-center shadow-2xl border-[6px] border-yellow-400"
             >
               <div className="flex justify-center gap-3 mb-6">
-                <Sparkle className="w-10 h-10 text-poke-yellow" />
-                <PixelHeart className="w-10 h-10 text-pokedex-red" />
-                <Sparkle className="w-10 h-10 text-poke-yellow" />
+                <Sparkle className="w-12 h-12 text-poke-yellow" />
+                <PixelHeart className="w-12 h-12 text-pokedex-red" />
+                <Sparkle className="w-12 h-12 text-poke-yellow" />
               </div>
               
-              <h2 className="font-pixel text-xl sm:text-2xl text-ink leading-relaxed mb-4">
+              <h2 className="font-pixel text-2xl sm:text-3xl text-ink leading-relaxed mb-4">
                 YOU SAVED THE WORLD! <br/>
-                <span className="text-pokedex-red text-base sm:text-lg">(And my heart)</span>
+                <span className="text-pokedex-red text-xl sm:text-2xl">(And my heart)</span>
               </h2>
               
-              <p className="text-sm text-muted-foreground mb-8">
+              <p className="text-base text-muted-foreground mb-8">
                 Grumpy Hawa has been successfully tamed. You earned 9999 EXP and a lifetime partner!
               </p>
 
-              <div className="inline-block border-4 border-yellow-400 bg-yellow-50 p-4 mb-8 rotate-2 shadow-md">
-                <p className="font-pixel text-xs text-yellow-700 mb-2">🏆 ACHIEVEMENT UNLOCKED</p>
-                <p className="font-bold text-ink">Best Boyfriend of The Year</p>
+              <div className="inline-block border-4 border-yellow-400 bg-yellow-50 p-6 mb-8 rotate-2 shadow-md">
+                <p className="font-pixel text-sm text-yellow-700 mb-3">🏆 ACHIEVEMENT UNLOCKED</p>
+                <p className="font-bold text-xl text-ink">Best Boyfriend of The Year</p>
               </div>
 
               <button 
                 onClick={resetBattle} 
-                className="rpg-btn rpg-btn-yellow text-xs px-6 py-3 w-full sm:w-auto mx-auto block"
+                className="rpg-btn rpg-btn-yellow text-sm px-8 py-4 w-full sm:w-auto mx-auto block"
               >
                 ↻ Play Again 
               </button>

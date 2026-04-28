@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import tabIcon from "@/assets/icon.png";
 import { LockScreen } from "@/components/game/LockScreen";
 import { BgmPlayer } from "@/components/game/BgmPlayer";
 import { Hero } from "@/components/game/Hero";
@@ -14,15 +13,6 @@ import { BossBattle } from "@/components/game/BossBattle";
 import { Inventory } from "@/components/game/Inventory";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Fadlan's Adventure - Birthday & Anniversary" },
-      { name: "description", content: "A retro RPG / Pokémon-style celebration site. Press start to play." },
-    ],
-    links: [
-      { rel: "icon", type: "image/png", href: tabIcon }
-    ]
-  }),
   component: Index,
 });
 
@@ -51,7 +41,7 @@ function Index() {
           <Inventory />
 
           <footer className="px-4 py-10 text-center" style={{ background: "var(--ink)" }}>
-            <p className="font-pixel text-[10px] text-poke-yellow">
+            <p className="font-pixel text-[14px] text-poke-yellow">
               ★ STATUS ★ {(questDone && quizDone && memoryDone && bossDefeated) ? "HALL OF FAME UNLOCKED" : "JOURNEY CONTINUES"}
             </p>
             <p className="text-xs text-white/70 mt-3">Made with ❤️ - Let's catch more memories together.</p>
