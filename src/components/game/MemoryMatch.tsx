@@ -131,21 +131,28 @@ export function MemoryMatch({ onComplete }: { onComplete: () => void }) {
                                             transition={{ duration: 0.4 }}
                                             style={{ transformStyle: "preserve-3d" }}
                                         >
+                                            {/* Sisi Belakang (Pokeball) - Ditambah WebkitBackfaceVisibility */}
                                             <div 
                                                 className="absolute inset-0 bg-blue-100 border-[3px] border-water rounded-lg flex flex-col items-center justify-center overflow-hidden"
-                                                style={{ backfaceVisibility: "hidden" }}
+                                                style={{ 
+                                                    backfaceVisibility: "hidden",
+                                                    WebkitBackfaceVisibility: "hidden" 
+                                                }}
                                             >
-                                                {/* Pola dekoratif biar mirip kartu beneran */}
                                                 <div className="absolute inset-1.5 border-[2px] border-dashed border-water/50 rounded-md"></div>
                                                 <div className="w-8 h-8 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center shadow-sm z-10">
                                                     <Pokeball color="var(--water)" className="w-5 h-5 sm:w-7 sm:h-7 opacity-80" />
                                                 </div>
                                             </div>
                                             
-                                            {/* Depan Kartu (Foto) */}
+                                            {/* Sisi Depan (Foto) - Ditambah WebkitBackfaceVisibility */}
                                             <div 
                                                 className="absolute inset-0 bg-white border-[3px] border-ink rounded-lg overflow-hidden shadow-sm"
-                                                style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+                                                style={{ 
+                                                    backfaceVisibility: "hidden",
+                                                    WebkitBackfaceVisibility: "hidden",
+                                                    transform: "rotateY(180deg)" 
+                                                }}
                                             >
                                                 <img 
                                                     src={card.image} 
