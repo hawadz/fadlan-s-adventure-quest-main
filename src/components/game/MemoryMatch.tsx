@@ -142,7 +142,6 @@ export function MemoryMatch({ onComplete }: { onComplete: () => void }) {
                                                 </div>
                                             </div>
                                             
-                                            {/* Depan Kartu (Foto) */}
                                             <div 
                                                 className="absolute inset-0 bg-white border-2 border-ink rounded-lg overflow-hidden shadow-sm"
                                                 style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
