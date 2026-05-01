@@ -5,10 +5,8 @@ export function Hero() {
   return (
     <section className="relative min-h-[92vh] flex items-center justify-center px-4 sm:px-6 py-16 overflow-hidden"
       style={{ background: "var(--gradient-sky)" }}>
-      {/* Grass floor sedikit diturunkan dari versi raksasa tadi */}
       <div className="absolute bottom-0 left-0 right-0 h-32" style={{ background: "var(--gradient-grass)", borderTop: "5px solid var(--ink)" }} />
 
-      {/* Floating decor - Ukuran ditengah-tengah (tidak terlalu kecil, tidak terlalu besar) */}
       {[
         { C: Pokeball, props: { className: "w-16 h-16 top-[12%] left-[8%]" }, d: 0 },
         { C: Pokeball, props: { color: "var(--water)", className: "w-12 h-12 top-[25%] right-[8%]" }, d: 0.6 },

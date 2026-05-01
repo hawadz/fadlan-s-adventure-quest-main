@@ -56,7 +56,6 @@ export function MemoryLabyrinth() {
                 setCollected(prev => [...prev, mem.id]);
             }
 
-            // Finish di (5, 5)
             if (nx === 5 && ny === 5) {
                 if (collected.length === MEMORIES.length) {
                     setTimeout(() => setIsWon(true), 300);

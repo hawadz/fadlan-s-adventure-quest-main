@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkle, PixelHeart } from "@/components/svg/GameIcons";
 
-// Import real photos for the avatars
 import imgFadlan from "@/assets/yeh.png"; 
 import imgHawa from "@/assets/grump.png"; 
 
@@ -12,14 +11,12 @@ const ALL_ACTIONS = [
   { id: 2, name: "🩹 Apologize", type: "heal", val: 30, msg: "Fadlan gave the puppy dog eyes and apologized. Recovered 30 HP!" },
   { id: 3, name: "🍜 Buy Seblak", type: "attack", val: 40, msg: "Fadlan ordered Level 5 Seblak! It's super effective! (-40 Anger)" },
   { id: 4, name: "🍵 Buy Iced Matcha", type: "attack", val: 35, msg: "Iced Matcha secured! Hawa's mood improved instantly. (-35 Anger)" },
-  // Ini yang diubah: Call langsung dan Ajak jalan
   { id: 5, name: "📞 Call Her Right Away", type: "heal", val: 25, msg: "Fadlan called her directly just to hear her voice. Recovered 25 HP!" },
   { id: 6, name: "🚗 Take Her Out", type: "attack", val: 30, msg: "Fadlan took her out on a spontaneous date. She can't stay mad! (-30 Anger)" },
   { id: 7, name: "🤣 Send Cat Memes", type: "attack", val: 20, msg: "Fadlan sent a funny cat meme. Hawa is trying not to laugh. (-20 Anger)" },
   { id: 8, name: "🤞 Promise Her", type: "heal", val: 20, msg: "Fadlan promised not to do it again. Recovered 20 HP!" },
 ];
 
-// Boss Hawa's attacks
 const BOSS_ATTACKS = [
   { msg: "Hawa said 'Terserah'. Emotional damage! (-25 HP)", dmg: 25 },
   { msg: "Hawa gave the silent treatment for an hour... Ouch! (-15 HP)", dmg: 15 },
@@ -140,7 +137,6 @@ export function BossBattle({ onComplete }: { onComplete: () => void }) {
   };
 
   return (
-    // Background diubah jadi var(--paper)
     <section id="boss-battle" className="px-4 py-16 sm:py-20 relative" style={{ background: "var(--paper)" }}>
       <AnimatePresence>
         {showFlash && (
@@ -157,7 +153,6 @@ export function BossBattle({ onComplete }: { onComplete: () => void }) {
       <div className="max-w-2xl mx-auto">
         <header className="text-center mb-8">
           <p className="font-pixel text-sm text-pokedex-red mb-2">// FINAL STAGE</p>
-          {/* Teks diubah jadi text-ink agar kelihatan di background putih */}
           <h2 className="font-pixel text-xl sm:text-3xl text-ink">Boss Battle!</h2>
         </header>
 
@@ -173,7 +168,6 @@ export function BossBattle({ onComplete }: { onComplete: () => void }) {
               <div className="absolute inset-0 bg-gradient-to-b from-[#e0f7fa] to-[#c8e6c9] opacity-70 pointer-events-none" />
 
               <div className="relative z-10">
-                {/* === BOSS HAWA AREA (Top Right) === */}
                 <div className="flex justify-between items-start mb-12">
                   <div className="w-1/2 max-w-[250px] border-[3px] border-ink p-3 sm:p-4 bg-white shadow-[4px_4px_0_0_rgba(0,0,0,1)] rounded-md">
                     <h3 className="font-pixel text-sm sm:text-base mb-2">GRUMPY HAWA</h3>
@@ -196,7 +190,6 @@ export function BossBattle({ onComplete }: { onComplete: () => void }) {
                   </motion.div>
                 </div>
 
-                {/* === PLAYER FADLAN AREA (Bottom Left) === */}
                 <div className="flex justify-between items-end mb-6">
                   <motion.div
                     animate={isPlayerShaking ? { x: [-10, 10, -10, 10, 0], filter: "contrast(1.5) sepia(1)" } : {}}
@@ -222,7 +215,6 @@ export function BossBattle({ onComplete }: { onComplete: () => void }) {
                   </div>
                 </div>
 
-                {/* === UI BOTTOM MENU === */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-[3px] border-ink bg-white p-3 rounded-lg shadow-md">
                   <div className="p-4 bg-gray-100 border-2 border-dashed border-gray-300 rounded flex items-center justify-center min-h-[100px]">
                     <p className="font-pixel text-xs sm:text-sm text-ink leading-relaxed text-center">

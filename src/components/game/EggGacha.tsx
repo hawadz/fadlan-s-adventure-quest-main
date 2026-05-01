@@ -19,7 +19,6 @@ export function EggGacha() {
   const [draws, setDraws] = useState(0);
   const [isHatched, setIsHatched] = useState(false);
   const [reward, setReward] = useState("");
-  // State baru untuk menyimpan sisa pesan yang belum keambil
   const [availableRewards, setAvailableRewards] = useState([...REWARDS]);
 
   const maxDraws = REWARDS.length;
@@ -27,7 +26,6 @@ export function EggGacha() {
   const handleTap = () => {
     if (isHatched || draws >= maxDraws || availableRewards.length === 0) return;
 
-    // Pilih secara acak dari PESAN YANG TERSISA saja
     const randomIndex = Math.floor(Math.random() * availableRewards.length);
     const selectedReward = availableRewards[randomIndex];
 
@@ -35,7 +33,6 @@ export function EggGacha() {
     setIsHatched(true);
     setDraws(prev => prev + 1);
     
-    // Hapus pesan yang barusan terpilih dari kotak undian
     setAvailableRewards(prev => prev.filter((_, index) => index !== randomIndex));
   };
 
@@ -48,7 +45,6 @@ export function EggGacha() {
     setDraws(0);
     setIsHatched(false);
     setReward("");
-    // Isi ulang kotak undiannya dengan ke-10 pesan awal kalau mau main lagi
     setAvailableRewards([...REWARDS]);
   };
 
@@ -62,7 +58,6 @@ export function EggGacha() {
         </header>
 
         <div className="rpg-box p-8 bg-white flex flex-col items-center justify-center min-h-[450px]">
-          {/* Tracker Sisa Gacha */}
           <div className="w-full flex justify-between mb-6 px-2 sm:px-4">
             <span className="font-pixel text-xs sm:text-sm text-muted-foreground">ATTEMPTS</span>
             <span className="font-pixel text-xs sm:text-sm text-pokedex-red">{draws} / {maxDraws}</span>

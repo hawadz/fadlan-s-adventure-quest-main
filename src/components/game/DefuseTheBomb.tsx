@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// IMPORT FOTO UNTUK HASIL AKHIR DI SINI
-import imgLose from "@/assets/kalah.png"; // Foto pas bom meledak
-import imgWin from "@/assets/menang.png"; // Foto pas berhasil
+import imgLose from "@/assets/kalah.png"; 
+import imgWin from "@/assets/menang.png"; 
 
 export function DefuseTheBomb() {
   const [phase, setPhase] = useState<"intro" | "playing" | "exploded" | "defused">("intro");
   const [timeLeft, setTimeLeft] = useState(60);
   
-  // Data kabel bomb (kuning adalah jawaban benar berdasarkan logika baru)
   const initialWires = [
     { id: "red", color: "bg-red-500", border: "border-red-700", cut: false, correct: false },
     { id: "blue", color: "bg-blue-500", border: "border-blue-700", cut: false, correct: false },
@@ -19,7 +17,6 @@ export function DefuseTheBomb() {
   
   const [wires, setWires] = useState(initialWires);
 
-  // Timer Countdown
   useEffect(() => {
     let timer: NodeJS.Timeout;
     if (phase === "playing" && timeLeft > 0) {
@@ -73,7 +70,7 @@ export function DefuseTheBomb() {
           
           <AnimatePresence mode="wait">
             
-            {/* TAHAP 1: INTRO */}
+            {/* INTRO */}
             {phase === "intro" && (
               <motion.div key="intro" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="py-6">
                 <div className="text-6xl mb-6">💣</div>
@@ -88,7 +85,7 @@ export function DefuseTheBomb() {
               </motion.div>
             )}
 
-            {/* TAHAP 2: GAMEPLAY */}
+            {/* GAMEPLAY */}
             {phase === "playing" && (
               <motion.div key="playing" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ opacity: 0 }}>
                 
@@ -99,14 +96,11 @@ export function DefuseTheBomb() {
                   </p>
                 </div>
 
-                {/* BOMB MANUAL LOGIC (Diperbaiki Biar Gak Kepotong) */}
                 <div className="relative pt-3 mb-6">
-                  {/* Label Kuning Sekarang Ada di Luar Kotak Scroll */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-yellow-400 px-4 py-1 border-2 border-ink text-[10px] font-bold z-10 whitespace-nowrap shadow-sm">
                     DEFUSAL MANUAL
                   </div>
                   
-                  {/* Kotak Putih Teks */}
                   <div className="bg-[#fdfbf7] p-4 sm:p-5 pt-6 border-[4px] border-ink font-mono text-[11px] sm:text-xs text-left shadow-inner max-h-[220px] overflow-y-auto leading-relaxed">
                     <ul className="list-disc pl-4 space-y-3 text-ink">
                       <li>Jika golongan darahku A atau B, potong kabel <b>MERAH</b>.</li>
@@ -150,7 +144,6 @@ export function DefuseTheBomb() {
               </motion.div>
             )}
 
-            {/* TAHAP 3: KALAU SALAH POTONG / WAKTU HABIS (Muncul Foto Komuk) */}
             {phase === "exploded" && (
               <motion.div key="exploded" initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="py-6 flex flex-col items-center">
                 <motion.div 
@@ -173,7 +166,6 @@ export function DefuseTheBomb() {
               </motion.div>
             )}
 
-            {/* TAHAP 4: KALAU BENAR (KABEL KUNING) */}
             {phase === "defused" && (
               <motion.div key="defused" initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="py-6 flex flex-col items-center">
                 

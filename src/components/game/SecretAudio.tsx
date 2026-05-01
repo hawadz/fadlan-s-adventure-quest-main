@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// IMPORT FILE AUDIO KAMU DI SINI
 import vnAudio from "@/assets/hayo.mp3"; 
 
 const BUTTONS = [
@@ -48,7 +47,6 @@ export function SecretAudio() {
   };
 
   const startLevel = (currentLevel: number) => {
-    // Panjang nada bertambah sesuai level (Level 1 = 3 nada, Level 5 = 7 nada)
     const seqLength = currentLevel + 2; 
     const newSeq = Array.from({ length: seqLength }, () => Math.floor(Math.random() * 4));
     setSequence(newSeq);
@@ -64,7 +62,6 @@ export function SecretAudio() {
   const playSequence = async (seq: number[], currentLevel: number) => {
     setPhase("demonstrating");
     
-    // Kecepatan makin cepat seiring naiknya level
     const speedMultiplier = Math.max(0.4, 1 - (currentLevel * 0.1)); 
     const toneDuration = 500 * speedMultiplier;
     const gapDuration = 200 * speedMultiplier;
@@ -97,10 +94,9 @@ export function SecretAudio() {
     const nextIndex = playerIndex + 1;
     if (nextIndex === sequence.length) {
       if (level === MAX_LEVEL) {
-        setTimeout(() => setPhase("won"), 600); // Lulus semua level!
+        setTimeout(() => setPhase("won"), 600); 
       } else {
-        // Naik ke level berikutnya
-        setPhase("demonstrating"); // Biar tombol nggak bisa diklik dulu
+        setPhase("demonstrating"); 
         setTimeout(() => {
           setLevel(level + 1);
           startLevel(level + 1);
@@ -130,7 +126,6 @@ export function SecretAudio() {
         <div className="rpg-box bg-[#f8f9fa] border-[6px] border-ink p-6 sm:p-10 shadow-2xl relative min-h-[400px] flex flex-col justify-center">
           
           <AnimatePresence mode="wait">
-            {/* TAHAP 1: INTRO */}
             {phase === "intro" && (
               <motion.div key="intro" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 <div className="text-6xl mb-6">🎵</div>
@@ -145,7 +140,6 @@ export function SecretAudio() {
               </motion.div>
             )}
 
-            {/* TAHAP 2 & 3: GAMEPLAY (DEMO & PLAYING) */}
             {(phase === "demonstrating" || phase === "playing") && (
               <motion.div key="game" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ opacity: 0 }}>
                 <div className="flex justify-between items-center mb-6">
@@ -155,7 +149,6 @@ export function SecretAudio() {
                   </p>
                 </div>
                 
-                {/* 2x2 Grid Buttons (Diperbesar) */}
                 <div className="grid grid-cols-2 gap-6 max-w-[300px] mx-auto mb-6">
                   {BUTTONS.map((btn) => (
                     <motion.button
@@ -174,7 +167,6 @@ export function SecretAudio() {
               </motion.div>
             )}
 
-            {/* TAHAP 4: KALAU KALAH */}
             {phase === "lost" && (
               <motion.div key="lost" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 <div className="text-6xl mb-6 grayscale">🎶</div>
@@ -188,7 +180,6 @@ export function SecretAudio() {
               </motion.div>
             )}
 
-            {/* TAHAP 5: KALAU MENANG (CASSETTE PLAYER) */}
             {phase === "won" && (
               <motion.div key="won" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="w-full">
                 <div className="text-center mb-8">
@@ -198,7 +189,6 @@ export function SecretAudio() {
                   </p>
                 </div>
                 
-                {/* Cassette Tape UI (Diperbesar) */}
                 <div className="bg-[#e0e0e0] border-4 border-gray-500 p-4 sm:p-6 rounded-md shadow-lg w-full max-w-md mx-auto mb-8 relative">
                   <div className="absolute top-3 left-1/2 -translate-x-1/2 w-32 h-4 bg-gray-400/30 rounded-full" />
                   
