@@ -10,6 +10,9 @@ import { QuizGame } from "@/components/game/QuizGame";
 import { MemoryMatch } from "@/components/game/MemoryMatch";
 import { EggGacha } from "@/components/game/EggGacha";
 import { BossBattle } from "@/components/game/BossBattle";
+import { SecretAudio } from "@/components/game/SecretAudio";
+import { MemoryLabyrinth } from "@/components/game/MemoryLabyrinth";
+import { DefuseTheBomb } from "@/components/game/DefuseTheBomb";
 import { Inventory } from "@/components/game/Inventory";
 
 export const Route = createFileRoute("/")({
@@ -36,9 +39,13 @@ function Index() {
           <EggGacha />
           <BossBattle onComplete={() => setBossDefeated(true)} />
           <QuizGame onComplete={() => setQuizDone(true)} />
+          <MemoryLabyrinth />
+          <DefuseTheBomb/>
           <Gallery />
+          <SecretAudio />
           <Stats />
           <Inventory />
+
 
           <footer className="px-4 py-10 text-center" style={{ background: "var(--ink)" }}>
             <p className="font-pixel text-[14px] text-poke-yellow">
